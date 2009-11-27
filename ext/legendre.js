@@ -33,8 +33,8 @@ var steps = [
 ];
 
 function evaluateLegendre() {
-    [x, y] = [variable('x'), variable('y')];
-
+	x = variable('x');
+	x = variable('y');
 
 	if ($('#results').length == 0) {
 		$('#form').after('<ol id="results"></ol>');

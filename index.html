@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Legendre symbol evaluator</title>
+    <link href="ext/style.css" rel="stylesheet" type="text/css">
+    <script src="ext/jquery.js" type="application/javascript"></script>
+    <script src="ext/legendre.js" type="application/javascript"></script>
+  </head>
+  <body>
+    <h1>Legendre symbol evaluator</h1>
+    <div id="instructions">
+      <h2>Properties of the Legendre symbol</h2>
+      <p>
+		<span id="p-odd-prime"><i>p</i> is an odd prime</span>,
+		<span id="a-not-congruent-p"><i>a</i> &#x2262; 0 (mod <i>p</i>)</span>
+		and <i>b</i> &#x2262; 0 (mod <i>p</i>),
+		and <i>q</i> &ne; <i>p</i> is an odd prime.
+	  </p>
+
+      <dl>
+		<dt id="congruent-numbers">(a)</dt>
+		<dd>
+		  If <i>a</i> &equiv; <i>b</i> (mod <i>p</i>) then (<i>a</i> | <i>p</i>)
+		  = (<i>b</i> | <i>p</i>)
+		</dd>
+
+		<dt id="square-numbers">(b)</dt>
+		<dd>
+		  (<i>a</i><sup>2</sup> | <i>p</i>) = 1
+		</dd>
+
+		<dt id="composite-numbers">(c)</dt>
+		<dd>
+		  (<i>ab</i> | <i>p</i>) = (<i>a</i> | <i>p</i>) (<i>b</i> | <i>p</i>)
+		</dd>
+
+		<dt id="quadratic-character--1">(d)</dt>
+		<dd>
+		  (-1 | <i>p</i>) = (-1)<sup>(<i>p</i> - 1) / 2</sup>
+		</dd>
+
+		<dt id="quadratic-character-2">(e)</dt>
+		<dd>
+		  (2 | <i>p</i>) = (-1)<sup>(<i>p</i><sup>2</sup> - 1) / 8</sup>
+		</dd>
+      </dl>
+    </div>
+    <div id="content">
+      <h2>Evaluate</h2>
+      <p id="form">
+        (<input id="x" size="1"> | <input id="y" size="1">)
+        <input id="evaluate" type="submit" value="Evaluate">
+      </p>
+    </div>
+  </body>
+</html>

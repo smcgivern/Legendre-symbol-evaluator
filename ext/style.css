@@ -1,3 +1,15 @@
-span.operator {
-	font-style : normal;
+dl {
+    width : auto;
+}
+
+dt {
+    width : 1em;
+    float : left;
+    font-weight : bold;
+	line-height : 2em;
+}
+
+dd {
+    width : auto;
+	line-height : 2em;
 }

@@ -1,5 +1,5 @@
 $(document).ready(function() {
-	$('#evaluate').click(evaluateLegendre);
+	$('#form').submit(evaluateLegendre);
 });
 
 var pow = Math.pow;

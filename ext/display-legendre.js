@@ -21,11 +21,13 @@ function attachResultsSublist(parent, results) {
     for (var i = 0; i < results.length; i++) {
         var result = results[i];
         var item = $('<li></li>');
-        var source = '#' + result.id;
 
-        item.addClass(source);
-        item.attr('title', $(source).text());
-        item.click(function() { .effect('highlight') });
+        item.addClass(result.id);
+        item.attr('title', $('#' + result.id).text());
+
+        item.click(function() {
+            $('#' + $(this).attr('class')).effect('highlight', {}, 3000);
+        });
 
         if ($.isArray(result)) {
             attachResultsSublist(item, result);

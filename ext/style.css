@@ -3,7 +3,8 @@ dl {
 }
 
 dt {
-    width : 15em;
+	clear : both;
+    width : 20em;
     float : left;
     font-weight : bold;
 	line-height : 2em;

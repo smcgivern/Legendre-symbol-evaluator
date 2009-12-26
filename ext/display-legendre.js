@@ -8,15 +8,26 @@ function variable(e) { return parseInt($('#' + e).val(), 10); }
 function legendreSymbol(x, y) { return '(' + p(x) + ' | ' + y + ')'; }
 
 function displayLegendre() {
-    var results = allLegendreSteps(variable('x'), variable('y'));
+    var x = variable('x');
+    var y = variable('y');
+    var results = allLegendreSteps(x, y);
     var element = $('#results');
+    var answer = $('<p></p>');
+
+    answer.attr('id', 'answer');
+    answer.append(legendreSymbol(x, y) + ' = '
+                  + last(results).next[0]);
 
     element.empty();
+    element.append('<h3>Solution</h3>');
+    element.append(answer);
+    element.append('<h4>Steps</h4>');
     attachResultsSublist(element, results);
 }
 
 function attachResultsSublist(parent, results) {
     var element = $('<ol></ol>');
+	element.addClass('steps');
 
     for (var i = 0; i < results.length; i++) {
         var result = results[i];

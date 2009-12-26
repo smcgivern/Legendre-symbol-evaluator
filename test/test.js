@@ -28,17 +28,17 @@ new Test.Unit.Runner({
         assert(mod(1, 3) == 1);
         assert(mod(3, 1) == 0);
 
-    	assert(mod(-3, 1) == 0);
-    	assert(mod(-10, 5) == 0);
-    	assert(mod(-10, 17) == 7);
+        assert(mod(-3, 1) == 0);
+        assert(mod(-10, 5) == 0);
+        assert(mod(-10, 17) == 7);
 
-    	assert(mod(3, -1) == 0);
-    	assert(mod(10, -5) == 0);
-    	assert(mod(10, -17) == -7);
+        assert(mod(3, -1) == 0);
+        assert(mod(10, -5) == 0);
+        assert(mod(10, -17) == -7);
 
-    	assert(mod(-3, -1) == 0);
-    	assert(mod(-10, -5) == 0);
-    	assert(mod(-10, -17) == -10);
+        assert(mod(-3, -1) == 0);
+        assert(mod(-10, -5) == 0);
+        assert(mod(-10, -17) == -10);
     }},
 
     testIsInt: function() { with(this) {
@@ -92,33 +92,33 @@ new Test.Unit.Runner({
     }},
 
     testPrimeFactors: function() { with(this) {
-		assert(arrayEqual(primeFactors(1), []));
-		assert(arrayEqual(primeFactors(4), [2, 2]));
-		assert(arrayEqual(primeFactors(15), [3, 5]));
-		assert(arrayEqual(primeFactors(28), [2, 2, 7]));
+        assert(arrayEqual(primeFactors(1), []));
+        assert(arrayEqual(primeFactors(4), [2, 2]));
+        assert(arrayEqual(primeFactors(15), [3, 5]));
+        assert(arrayEqual(primeFactors(28), [2, 2, 7]));
     }},
 
-	testLegendreStep: function() { with(this) {
-		var tests = [
-			{'a': 1, 'p': 1, 'id': 'p-odd-prime', 'next': [0, 0]},
-			{'a': 1, 'p': 2, 'id': 'p-odd-prime', 'next': [0, 0]},
-			{
-				'a': 3, 'p': 3,
-				'id': 'a-not-congruent-p', 'next': [0, 0]
-			},
-			{
-				'a': 13, 'p': 13,
-				'id': 'a-not-congruent-p', 'next': [0, 0]
-			},
-			{
-				'a': 138, 'p': 139,
-				'id': 'quadratic-character--1', 'next': [-1, 0]
-			},
-			{
-				'a': -1, 'p': 149,
-				'id': 'quadratic-character--1', 'next': [1, 0]
-			},
-			{
+    testLegendreStep: function() { with(this) {
+        var tests = [
+            {'a': 1, 'p': 1, 'id': 'p-odd-prime', 'next': [0, 0]},
+            {'a': 1, 'p': 2, 'id': 'p-odd-prime', 'next': [0, 0]},
+            {
+                'a': 3, 'p': 3,
+                'id': 'a-not-congruent-p', 'next': [0, 0]
+            },
+            {
+                'a': 13, 'p': 13,
+                'id': 'a-not-congruent-p', 'next': [0, 0]
+            },
+            {
+                'a': 138, 'p': 139,
+                'id': 'quadratic-character--1', 'next': [-1, 0]
+            },
+            {
+                'a': -1, 'p': 149,
+                'id': 'quadratic-character--1', 'next': [1, 0]
+            },
+            {
 				'a': 92, 'p': 3,
 				'id': 'congruent-numbers', 'next': [2, 3]
 			},
@@ -144,11 +144,11 @@ new Test.Unit.Runner({
 			},
 			{
 				'a': 2, 'p': 5,
-				'id': 'quadratic-character-2', 'next': [-1, 5]
+				'id': 'quadratic-character-2', 'next': [-1, 0]
 			},
 			{
 				'a': 2, 'p': 137,
-				'id': 'quadratic-character-2', 'next': [1, 137]
+				'id': 'quadratic-character-2', 'next': [1, 0]
 			},
 			{
 				'a': 5, 'p': 7,

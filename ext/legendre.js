@@ -70,7 +70,7 @@ var steps = [
 	{
 		'id': 'quadratic-character-2',
 		'check': function (x, y) { return (x == 2); },
-		'result': function (x, y) {	return [pow(x, (pow(x, 2) - 1) / 8), y]; }
+		'result': function (x, y) {	return [pow(-1, (pow(y, 2) - 1) / 8), y]; }
 	},
 	{
 		'id': 'law-quadratic-reciprocity-1',
@@ -82,7 +82,7 @@ var steps = [
 		'result': function (x, y) {	return [y, x]; }
 	},
 	{
-		'id': 'law-quadratic-reciprocity-1',
+		'id': 'law-quadratic-reciprocity-2',
 		'check': function (x, y) {
 			return (isPrime(x) && isPrime(y) &&
 					(mod(x, 4) == 3 && mod(y, 4) == 3)

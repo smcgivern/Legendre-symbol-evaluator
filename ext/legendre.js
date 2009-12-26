@@ -40,12 +40,12 @@ function primeFactors(n) {
 var steps = [
 	{
 		'id': 'p-odd-prime',
-		'check': function (x, y) { return isOddPrime(y); },
+		'check': function (x, y) { return !isOddPrime(y); },
 		'result': function (x, y) { return [0, 0]; }
 	},
 	{
 		'id': 'a-not-congruent-p',
-		'check': function (x, y) { return (mod(x, y) != 0) },
+		'check': function (x, y) { return (mod(x, y) == 0) },
 		'result': function (x, y) { return [0, 0]; }
 	},
 	{
@@ -92,6 +92,16 @@ var steps = [
 		'result': function (x, y) {	return [[-1, y], x]; }
 	}
 ];
+
+function legendreStep(a, p) {
+	for (var i = 0; i < steps.length; i++) {
+		var step = steps[i];
+
+		if (step.check(a, p)) {
+			return {'id': step.id, 'next': step.result(a, p)};
+		}
+	}
+}
 
 function evaluateLegendre() {
 	var results = evaluationSteps(variable('x'), variable('y'));

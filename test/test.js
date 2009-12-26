@@ -147,11 +147,11 @@ new Test.Unit.Runner({
 			},
 			{
 				'a': 138, 'p': 139,
-				'id': 'quadratic-character--1', 'next': [-1, 139]
+				'id': 'quadratic-character--1', 'next': [-1, 0]
 			},
 			{
 				'a': -1, 'p': 149,
-				'id': 'quadratic-character--1', 'next': [1, 149]
+				'id': 'quadratic-character--1', 'next': [1, 0]
 			},
 			{
 				'a': 92, 'p': 3,
@@ -163,11 +163,11 @@ new Test.Unit.Runner({
 			},
 			{
 				'a': 4, 'p': 7,
-				'id': 'square-numbers', 'next': [1, 7]
+				'id': 'square-numbers', 'next': [1, 0]
 			},
 			{
 				'a': 144, 'p': 149,
-				'id': 'square-numbers', 'next': [1, 149]
+				'id': 'square-numbers', 'next': [1, 0]
 			},
 			{
 				'a': 8, 'p': 13,
@@ -219,10 +219,10 @@ new Test.Unit.Runner({
 			[[1, 1], [0, 0]],
 			[[1, 2], [0, 0]],
 			[[9, 3], [0, 0]],
-			[[1, 3], [1, 3]],
-			[[9, 19], [1, 19]],
-			[[12, 71], [1, 71]],
-			[[83, 97], [-1, 83]],
+			[[1, 3], [1, 0]],
+			[[9, 19], [1, 0]],
+			[[12, 71], [1, 0]],
+			[[83, 97], [-1, 0]],
 		]
 
 		for (var i = 0; i < tests.length; i++) {

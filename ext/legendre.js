@@ -51,12 +51,12 @@ var steps = [
 	{
 		'id': 'quadratic-character--1',
 		'check': function (x, y) { return ((x == -1) || (x == y - 1)); },
-		'result': function (x, y) { return [pow(-1, (y - 1) / 2), y]; }
+		'result': function (x, y) { return [pow(-1, (y - 1) / 2), 0]; }
 	},
 	{
 		'id': 'square-numbers',
 		'check': function (x, y) { return isSquare(x); },
-		'result': function (x, y) { return [1, y]; }
+		'result': function (x, y) { return [1, 0]; }
 	},
 	{
 		'id': 'congruent-numbers',
@@ -105,7 +105,7 @@ function legendreStep(x, y) {
 
 function allLegendreSteps(x, y) {
 	function isNotOne(n) { return !(n == 1 || n == -1); }
-	function done(s) { return (allOnes(s[0]) || s[0] == 0); }
+	function done(s) { return (allOnes(s[0]) || s[1] == 0); }
 
 	function allOnes(a) {
 		return ($.grep($.makeArray(a), isNotOne).length == 0);

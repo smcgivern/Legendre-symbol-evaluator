@@ -45,7 +45,7 @@ var steps = [
     },
     {
         'id': 'a-not-congruent-p',
-        'check': function (x, y) { return (mod(x, y) == 0) },
+        'check': function (x, y) { return (mod(x, y) == 0); },
         'result': function (x, y) { return [0, 0]; }
     },
     {

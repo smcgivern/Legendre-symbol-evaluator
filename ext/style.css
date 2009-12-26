@@ -1,16 +1,35 @@
+body {
+    font-family : sans-serif;
+    font-size : 105%;
+    width : 50em;
+    margin : 1em auto;
+}
+
+h1 {
+    text-align : center;
+}
+
 dl {
     width : auto;
 }
 
 dt {
-    clear : both;
-    width : 20em;
-    float : left;
     font-weight : bold;
     line-height : 2em;
 }
 
 dd {
-    width : auto;
-    line-height : 2em;
+	margin-left : 0em;
+}
+
+#results ol {
+	list-style : none;
+	margin-left : 0em;
+	padding-left : 2em;
+	line-height : 2em;
+}
+
+#instructions {
+	float : right;
+	width : 25em;
 }

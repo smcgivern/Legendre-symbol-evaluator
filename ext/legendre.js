@@ -149,15 +149,28 @@ function allLegendreSteps(x, y) {
 }
 
 function evaluateLegendre() {
-	var results = allLegendreSteps(variable('x'), variable('y'));
+    var results = allLegendreSteps(variable('x'), variable('y'));
+    var element = $('#results');
 
-	if (last(results).next == [0, 0]) {
-		// error
-	}
+    element.empty();
+    attachResultsSublist(element, results);
+}
 
-	if ($('#results').length == 0) {
-		$('#form').after('<div id="results"></div>');
-	}
+function attachResultsSublist(parent, results) {
+    var element = $('<ol></ol>');
 
-	$('#results')
+    for (var i = 0; i < results.length; i++) {
+        result = results[i];
+        item = $('<li></li>');
+
+        if ($.isArray(result)) {
+            attachResultsSublist(item, result);
+        } else {
+            item.append(result.next[0] + ' | ' + result.next[1]);
+        }
+
+        element.append(item);
+    }
+
+    parent.append(element);
 }

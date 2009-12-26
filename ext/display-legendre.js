@@ -25,6 +25,7 @@ function attachResultsSublist(parent, results) {
         item.addClass(result.id);
         item.attr('title', $('#' + result.id).text());
 
+		item.unbind();
         item.click(function() {
             $('#' + $(this).attr('class')).effect('highlight', {}, 3000);
         });
@@ -32,7 +33,9 @@ function attachResultsSublist(parent, results) {
         if ($.isArray(result)) {
             attachResultsSublist(item, result);
         } else {
-            if (result.next[1] == 0) {
+			if (result.next[0] == 0) {
+				item.append('Check failed: ' + item.attr('title')) + '.';
+			} else if (result.next[1] == 0) {
                 item.append(e(i) + p(result.next[0]));
             } else {
                 item.append(e(i) + legendreSymbol(result.next[0],

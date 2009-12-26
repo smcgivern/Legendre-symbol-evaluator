@@ -111,8 +111,6 @@ function legendreStep(x, y) {
 
 function allLegendreSteps(x, y) {
     function isNotOne(n) { return !(n == 1 || n == -1); }
-    function done(s) { return (allOnes(s[0]) || s[1] == 0); }
-
     function allOnes(a) {
         return ($.grep($.makeArray(a), isNotOne).length == 0);
     }

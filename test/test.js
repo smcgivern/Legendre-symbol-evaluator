@@ -96,8 +96,6 @@ new Test.Unit.Runner({
 		assert(arrayEqual(primeFactors(4), [2, 2]));
 		assert(arrayEqual(primeFactors(15), [3, 5]));
 		assert(arrayEqual(primeFactors(28), [2, 2, 7]));
-
-		assert(arrayEqual(primeFactors(-28), [-1, 2, 2, 7]));
     }},
 
 	testLegendreStep: function() { with(this) {

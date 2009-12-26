@@ -24,7 +24,6 @@ function primeFactors(n) {
 	var fs = new Array();
 
 	if (isPrime(n)) { return [n]; }
-	if (n < 0) { fs.push(-1); n = -n; }
 
 	for (var i = 2; n / i >= 1; i++) {
 		if (isInt(n / i) && isPrime(i)) {

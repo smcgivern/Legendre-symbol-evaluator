@@ -1,7 +1,3 @@
-$(document).ready(function() {
-    $('#form').submit(evaluateLegendre);
-});
-
 var pow = Math.pow;
 function last(a) { return a[a.length - 1]; }
 function variable(e) { return parseInt($('#' + e).val(), 10); }
@@ -150,31 +146,4 @@ function allLegendreSteps(x, y) {
     }
 
     return legendreSteps;
-}
-
-function evaluateLegendre() {
-    var results = allLegendreSteps(variable('x'), variable('y'));
-    var element = $('#results');
-
-    element.empty();
-    attachResultsSublist(element, results);
-}
-
-function attachResultsSublist(parent, results) {
-    var element = $('<ol></ol>');
-
-    for (var i = 0; i < results.length; i++) {
-        result = results[i];
-        item = $('<li></li>');
-
-        if ($.isArray(result)) {
-            attachResultsSublist(item, result);
-        } else {
-            item.append(result.next[0] + ' | ' + result.next[1]);
-        }
-
-        element.append(item);
-    }
-
-    parent.append(element);
 }

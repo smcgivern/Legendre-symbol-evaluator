@@ -1,0 +1,44 @@
+$(document).ready(function() {
+    $('#form').submit(displayLegendre);
+});
+
+function displayLegendre() {
+    var results = allLegendreSteps(variable('x'), variable('y'));
+    var element = $('#results');
+
+    element.empty();
+    attachResultsSublist(element, results);
+}
+
+function legendreSymbol(x, y) { return '(' + p(x) + ' | ' + y + ')'; }
+function e(n) { return (n > 0 ? '= ' : ''); }
+function p(r) { return $.makeArray(r).join(' &#215; '); }
+
+function attachResultsSublist(parent, results) {
+    var element = $('<ol></ol>');
+
+    for (var i = 0; i < results.length; i++) {
+        var result = results[i];
+        var item = $('<li></li>');
+		var source = '#' + result.id;
+
+		item.addClass(source);
+		item.attr('title', $(source).text());
+		item.click(function() { .effect('highlight') });
+
+        if ($.isArray(result)) {
+            attachResultsSublist(item, result);
+        } else {
+			if (result.next[1] == 0) {
+				item.append(e(i) + p(result.next[0]));
+			} else {
+				item.append(e(i) + legendreSymbol(result.next[0],
+												  result.next[1]));
+			}
+        }
+
+        element.append(item);
+    }
+
+    parent.append(element);
+}

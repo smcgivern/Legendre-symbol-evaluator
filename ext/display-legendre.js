@@ -2,6 +2,11 @@ $(document).ready(function() {
     $('#form').submit(displayLegendre);
 });
 
+function e(n) { return (n > 0 ? '= ' : ''); }
+function p(r) { return $.makeArray(r).join(' &#215; '); }
+function variable(e) { return parseInt($('#' + e).val(), 10); }
+function legendreSymbol(x, y) { return '(' + p(x) + ' | ' + y + ')'; }
+
 function displayLegendre() {
     var results = allLegendreSteps(variable('x'), variable('y'));
     var element = $('#results');
@@ -9,10 +14,6 @@ function displayLegendre() {
     element.empty();
     attachResultsSublist(element, results);
 }
-
-function legendreSymbol(x, y) { return '(' + p(x) + ' | ' + y + ')'; }
-function e(n) { return (n > 0 ? '= ' : ''); }
-function p(r) { return $.makeArray(r).join(' &#215; '); }
 
 function attachResultsSublist(parent, results) {
     var element = $('<ol></ol>');

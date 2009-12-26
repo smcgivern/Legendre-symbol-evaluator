@@ -1,6 +1,5 @@
 var pow = Math.pow;
 function last(a) { return a[a.length - 1]; }
-function variable(e) { return parseInt($('#' + e).val(), 10); }
 function mod(n, m) { return (n - Math.floor(n / m) * m); }
 function isInt(n) { return (n == Math.floor(n)); }
 function isSquare(n) { return isInt(Math.sqrt(n)); }

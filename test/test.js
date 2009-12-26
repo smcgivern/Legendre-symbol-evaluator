@@ -6,9 +6,11 @@ function arrayEqual(x, y) {
     var b = y.sort();
 
     for (var i = 0; b[i]; i++) {
-        if (a[i] !== b[i]) {
-            return false;
-        }
+		if (a[i].constructor == Array && b[i].constructor == Array) {
+			if (!arrayEqual(a[i], b[i])) { return false ;}
+		} else {
+			if (a[i] !== b[i]) { return false; }
+		}
     }
 
     return true;
@@ -97,4 +99,57 @@ new Test.Unit.Runner({
 
 		assert(arrayEqual(primeFactors(-28), [-1, 2, 2, 7]));
     }},
+
+	testLegendreStep: function() { with(this) {
+		var tests = [
+			{'a': 1, 'p': 1, 'id': 'p-odd-prime', 'next': [0, 0]},
+			{'a': 1, 'p': 2, 'id': 'p-odd-prime', 'next': [0, 0]},
+			{
+				'a': 3, 'p': 3,
+				'id': 'a-not-congruent-p', 'next': [0, 0]
+			},
+			{
+				'a': 13, 'p': 13,
+				'id': 'a-not-congruent-p', 'next': [0, 0]
+			},
+			{
+				'a': 92, 'p': 3,
+				'id': 'congruent-numbers', 'next': [2, 3]
+			},
+			{
+				'a': -10, 'p': 3,
+				'id': 'congruent-numbers', 'next': [2, 3]
+			},
+			{
+				'a': 4, 'p': 5,
+				'id': 'square-numbers', 'next': [1, 5]
+			},
+			{
+				'a': 144, 'p': 149,
+				'id': 'square-numbers', 'next': [1, 149]
+			},
+			{
+				'a': 8, 'p': 13,
+				'id': 'composite-numbers', 'next': [[2, 2, 2], 13]
+			},
+			{
+				'a': 28, 'p': 149,
+				'id': 'composite-numbers', 'next': [[2, 2, 7], 149]
+			},
+//			{
+//				'a': -1, 'p': 149,
+//				'id': 'quadratic-character--1', 'next': [-1, 149]
+//			},
+		]
+
+		for (var i = 0; i < tests.length; i++) {
+			var test = tests[i];
+			var result = legendreStep(test.a, test.p);
+
+			if (result.id != test.id) { alert(result.id); } // delete
+			assert(result.id == test.id);
+			if (!arrayEqual(result.next, test.next)) { alert(result.next); } // delete
+			assert(arrayEqual(result.next, test.next));
+		}
+	}},
 });

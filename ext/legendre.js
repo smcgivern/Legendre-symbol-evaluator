@@ -115,7 +115,7 @@ function allLegendreSteps(x, y) {
 	var next = step.next;
 	var legendreSteps = [step];
 
-	while(!done(next)) {
+	while(next[1] != 0) {
 		if ($.isArray(next[0])) {
 			var zs = [];
 
@@ -125,7 +125,7 @@ function allLegendreSteps(x, y) {
 				zs.push(last(substeps).next[0]);
 			}
 
-			step = {'id': 'composite-numbers', 'next': [zs, next[1]]};
+			step = {'id': 'composite-numbers', 'next': [zs, 0]};
 			next = step.next;
 			legendreSteps.push(step);
 
@@ -141,7 +141,7 @@ function allLegendreSteps(x, y) {
 		for (var i = 0; i < next[0].length; i++) { z = z * next[0][i]; }
 
 		legendreSteps.push(
-			{'id': 'composite-numbers', 'next': [z, next[1]]}
+			{'id': 'composite-numbers', 'next': [z, 0]}
 		);
 	}
 

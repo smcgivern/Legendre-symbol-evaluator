@@ -6,11 +6,11 @@ function arrayEqual(x, y) {
     var b = y.sort();
 
     for (var i = 0; b[i]; i++) {
-		if (a[i].constructor == Array && b[i].constructor == Array) {
-			if (!arrayEqual(a[i], b[i])) { return false ;}
-		} else {
-			if (a[i] !== b[i]) { return false; }
-		}
+        if (a[i].constructor == Array && b[i].constructor == Array) {
+            if (!arrayEqual(a[i], b[i])) { return false ;}
+        } else {
+            if (a[i] !== b[i]) { return false; }
+        }
     }
 
     return true;

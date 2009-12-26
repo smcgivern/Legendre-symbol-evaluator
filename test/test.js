@@ -111,6 +111,14 @@ new Test.Unit.Runner({
 				'id': 'a-not-congruent-p', 'next': [0, 0]
 			},
 			{
+				'a': 138, 'p': 139,
+				'id': 'quadratic-character--1', 'next': [-1, 139]
+			},
+			{
+				'a': -1, 'p': 149,
+				'id': 'quadratic-character--1', 'next': [1, 149]
+			},
+			{
 				'a': 92, 'p': 3,
 				'id': 'congruent-numbers', 'next': [2, 3]
 			},
@@ -119,8 +127,8 @@ new Test.Unit.Runner({
 				'id': 'congruent-numbers', 'next': [2, 3]
 			},
 			{
-				'a': 4, 'p': 5,
-				'id': 'square-numbers', 'next': [1, 5]
+				'a': 4, 'p': 7,
+				'id': 'square-numbers', 'next': [1, 7]
 			},
 			{
 				'a': 144, 'p': 149,
@@ -134,10 +142,6 @@ new Test.Unit.Runner({
 				'a': 28, 'p': 149,
 				'id': 'composite-numbers', 'next': [[2, 2, 7], 149]
 			},
-//			{
-//				'a': -1, 'p': 149,
-//				'id': 'quadratic-character--1', 'next': [-1, 149]
-//			},
 		]
 
 		for (var i = 0; i < tests.length; i++) {

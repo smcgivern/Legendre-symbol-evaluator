@@ -48,6 +48,11 @@ var steps = [
 		'result': function (x, y) { return [0, 0]; }
 	},
 	{
+		'id': 'quadratic-character--1',
+		'check': function (x, y) { return ((x == -1) || (x == y - 1)); },
+		'result': function (x, y) { return [pow(-1, (y - 1) / 2), y]; }
+	},
+	{
 		'id': 'congruent-numbers',
 		'check': function (x, y) { return ((x > y) || (x < -1)); },
 		'result': function (x, y) { return [mod(x, y), y]; }
@@ -61,11 +66,6 @@ var steps = [
 		'id': 'composite-numbers',
 		'check': function (x, y) { return isComposite(x); },
 		'result': function (x, y) { return [primeFactors(x), y]; }
-	},
-	{
-		'id': 'quadratic-character--1',
-		'check': function (x, y) { return ((x == -1) || (x == y - 1)); },
-		'result': function (x, y) { return [pow(-1, (x - 1) / 2), y]; }
 	},
 	{
 		'id': 'quadratic-character-2',

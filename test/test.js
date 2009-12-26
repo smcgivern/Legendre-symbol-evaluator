@@ -16,41 +16,6 @@ function arrayEqual(x, y) {
     return true;
 };
 
-function DumpObject(obj)
-{
-  var od = new Object;
-  var result = "";
-  var len = 0;
-
-  for (var property in obj)
-  {
-    var value = obj[property];
-    if (typeof value == 'string')
-      value = "'" + value + "'";
-    else if (typeof value == 'object')
-    {
-      if (value instanceof Array)
-      {
-        value = "[ " + DumpObject(value).dump + " ]";
-      }
-      else
-      {
-        var ood = DumpObject(value);
-        value = "{ " + ood.dump + " }";
-      }
-    }
-    result += "'" + property + "' : " + value + ", ";
-    len++;
-  }
-  od.dump = result.replace(/, $/, "");
-  od.len = len;
-  od.nil = (obj == null);
-
-  return od;
-}
-
-
-
 new Test.Unit.Runner({
     setup: function() {
     },
@@ -222,14 +187,13 @@ new Test.Unit.Runner({
 			[[1, 3], [1, 0]],
 			[[9, 19], [1, 0]],
 			[[12, 71], [1, 0]],
-			[[83, 97], [-1, 0]],
+			[[83, 97], [-1, 0]]
 		]
 
 		for (var i = 0; i < tests.length; i++) {
 			var test = tests[i];
 			var result = allLegendreSteps(test[0][0], test[0][1]);
 
-			if (!arrayEqual(last(result).next, test[1])) { alert(DumpObject(result).dump); }
 			assert(arrayEqual(last(result).next, test[1]));
 		}
     }},

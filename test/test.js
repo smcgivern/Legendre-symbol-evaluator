@@ -16,6 +16,41 @@ function arrayEqual(x, y) {
     return true;
 };
 
+function DumpObject(obj)
+{
+  var od = new Object;
+  var result = "";
+  var len = 0;
+
+  for (var property in obj)
+  {
+    var value = obj[property];
+    if (typeof value == 'string')
+      value = "'" + value + "'";
+    else if (typeof value == 'object')
+    {
+      if (value instanceof Array)
+      {
+        value = "[ " + DumpObject(value).dump + " ]";
+      }
+      else
+      {
+        var ood = DumpObject(value);
+        value = "{ " + ood.dump + " }";
+      }
+    }
+    result += "'" + property + "' : " + value + ", ";
+    len++;
+  }
+  od.dump = result.replace(/, $/, "");
+  od.len = len;
+  od.nil = (obj == null);
+
+  return od;
+}
+
+
+
 new Test.Unit.Runner({
     setup: function() {
     },
@@ -142,16 +177,60 @@ new Test.Unit.Runner({
 				'a': 28, 'p': 149,
 				'id': 'composite-numbers', 'next': [[2, 2, 7], 149]
 			},
+			{
+				'a': 2, 'p': 5,
+				'id': 'quadratic-character-2', 'next': [-1, 5]
+			},
+			{
+				'a': 2, 'p': 137,
+				'id': 'quadratic-character-2', 'next': [1, 137]
+			},
+			{
+				'a': 5, 'p': 7,
+				'id': 'law-quadratic-reciprocity-1', 'next': [7, 5]
+			},
+			{
+				'a': 3, 'p': 13,
+				'id': 'law-quadratic-reciprocity-1', 'next': [13, 3]
+			},
+			{
+				'a': 3, 'p': 7,
+				'id': 'law-quadratic-reciprocity-2',
+				'next': [[-1, 7], 3]
+			},
+			{
+				'a': 83, 'p': 103,
+				'id': 'law-quadratic-reciprocity-2',
+				'next': [[-1, 103], 83]
+			}
 		]
 
 		for (var i = 0; i < tests.length; i++) {
 			var test = tests[i];
 			var result = legendreStep(test.a, test.p);
 
-			if (result.id != test.id) { alert(result.id); } // delete
 			assert(result.id == test.id);
-			if (!arrayEqual(result.next, test.next)) { alert(result.next); } // delete
 			assert(arrayEqual(result.next, test.next));
 		}
 	}},
+
+    testAllLegendreSteps: function() { with(this) {
+		var tests = [
+			[[1, 1], [0, 0]],
+			[[1, 2], [0, 0]],
+			[[9, 3], [0, 0]],
+			[[1, 3], [1, 3]],
+			[[9, 19], [1, 19]],
+			[[12, 71], [1, 71]],
+			[[83, 97], [-1, 83]],
+		]
+
+		for (var i = 0; i < tests.length; i++) {
+			var test = tests[i];
+			var result = allLegendreSteps(test[0][0], test[0][1]);
+
+			if (!arrayEqual(last(result).next, test[1])) { alert(DumpObject(result).dump); }
+			assert(arrayEqual(last(result).next, test[1]));
+		}
+    }},
 });

@@ -3,7 +3,8 @@ $(document).ready(function() {
 });
 
 var pow = Math.pow;
-function variable(name) { return parseInt($('#' + name).val(), 10); }
+function last(a) { return a[a.length - 1]; }
+function variable(e) { return parseInt($('#' + e).val(), 10); }
 function mod(n, m) { return (n - Math.floor(n / m) * m); }
 function isInt(n) { return (n == Math.floor(n)); }
 function isSquare(n) { return isInt(Math.sqrt(n)); }
@@ -53,14 +54,14 @@ var steps = [
 		'result': function (x, y) { return [pow(-1, (y - 1) / 2), y]; }
 	},
 	{
-		'id': 'congruent-numbers',
-		'check': function (x, y) { return ((x > y) || (x < -1)); },
-		'result': function (x, y) { return [mod(x, y), y]; }
-	},
-	{
 		'id': 'square-numbers',
 		'check': function (x, y) { return isSquare(x); },
 		'result': function (x, y) { return [1, y]; }
+	},
+	{
+		'id': 'congruent-numbers',
+		'check': function (x, y) { return ((x > y) || (x < -1)); },
+		'result': function (x, y) { return [mod(x, y), y]; }
 	},
 	{
 		'id': 'composite-numbers',
@@ -92,24 +93,71 @@ var steps = [
 	}
 ];
 
-function legendreStep(a, p) {
+function legendreStep(x, y) {
 	for (var i = 0; i < steps.length; i++) {
 		var step = steps[i];
 
-		if (step.check(a, p)) {
-			return {'id': step.id, 'next': step.result(a, p)};
+		if (step.check(x, y)) {
+			return {'id': step.id, 'next': step.result(x, y)};
 		}
 	}
 }
 
-function evaluateLegendre() {
-	var results = evaluationSteps(variable('x'), variable('y'));
+function allLegendreSteps(x, y) {
+	function isNotOne(n) { return !(n == 1 || n == -1); }
+	function done(s) { return (allOnes(s[0]) || s[0] == 0); }
 
-	if (result == [0, 0]) {
+	function allOnes(a) {
+		return ($.grep($.makeArray(a), isNotOne).length == 0);
+	}
+
+	var step = legendreStep(x, y);
+	var next = step.next;
+	var legendreSteps = [step];
+
+	while(!done(next)) {
+		if ($.isArray(next[0])) {
+			var zs = [];
+
+			for (var i = 0; i < next[0].length; i++) {
+				substeps = allLegendreSteps(next[0][i], next[1]);
+				legendreSteps.push(substeps);
+				zs.push(last(substeps).next[0]);
+			}
+
+			step = {'id': 'composite-numbers', 'next': [zs, next[1]]};
+			next = step.next;
+			legendreSteps.push(step);
+
+		} else {
+			step = legendreStep(step.next[0], step.next[1]);
+			next = step.next;
+			legendreSteps.push(step);
+		}
+	}
+
+	if ($.isArray(next[0]) && allOnes(next[0])) {
+		var z = 1;
+		for (var i = 0; i < next[0].length; i++) { z = z * next[0][i]; }
+
+		legendreSteps.push(
+			{'id': 'composite-numbers', 'next': [z, next[1]]}
+		);
+	}
+
+	return legendreSteps;
+}
+
+function evaluateLegendre() {
+	var results = allLegendreSteps(variable('x'), variable('y'));
+
+	if (last(results).next == [0, 0]) {
 		// error
 	}
 
 	if ($('#results').length == 0) {
-		$('#form').after('<ol id="results"></ol>');
+		$('#form').after('<div id="results"></div>');
 	}
+
+	$('#results')
 }

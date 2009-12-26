@@ -3,14 +3,14 @@ dl {
 }
 
 dt {
-	clear : both;
+    clear : both;
     width : 20em;
     float : left;
     font-weight : bold;
-	line-height : 2em;
+    line-height : 2em;
 }
 
 dd {
     width : auto;
-	line-height : 2em;
+    line-height : 2em;
 }

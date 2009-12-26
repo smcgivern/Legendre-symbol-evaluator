@@ -50,8 +50,12 @@ var steps = [
     },
     {
         'id': 'quadratic-character--1',
-        'check': function (x, y) { return ((x == -1) || (x == y - 1)); },
-        'result': function (x, y) { return [pow(-1, (y - 1) / 2), 0]; }
+        'check': function (x, y) {
+            return ((x == -1) || (x == y - 1));
+        },
+        'result': function (x, y) {
+            return [pow(-1, (y - 1) / 2), 0];
+        }
     },
     {
         'id': 'square-numbers',
@@ -71,7 +75,9 @@ var steps = [
     {
         'id': 'quadratic-character-2',
         'check': function (x, y) { return (x == 2); },
-        'result': function (x, y) { return [pow(-1, (pow(y, 2) - 1) / 8), y]; }
+        'result': function (x, y) {
+            return [pow(-1, (pow(y, 2) - 1) / 8), 0];
+        }
     },
     {
         'id': 'law-quadratic-reciprocity-1',

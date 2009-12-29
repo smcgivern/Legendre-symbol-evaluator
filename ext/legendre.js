@@ -7,24 +7,24 @@ function isComposite(n) { return !(isOddPrime(n) || ((0 <= n) && (n <= 2))); }
 function isOddPrime(n) { return (isPrime(n) && n != 2); }
 
 function isPrime(n) {
-    if ((n < 3) || (mod(n, 2) == 0)) { return (n == 2); }
+    if ((n < 3) || (mod(n, 2) === 0)) { return (n == 2); }
 
     for (var i = 3; n / i >= i; i += 2) {
-        if (mod(n, i) == 0) { return false; }
+        if (mod(n, i) === 0) { return false; }
     }
 
     return true;
 }
 
 function primeFactors(n) {
-    var fs = new Array();
+    var fs = [];
 
     if (isPrime(n)) { return [n]; }
 
     for (var i = 2; n / i >= 1; i++) {
         if (isInt(n / i) && isPrime(i)) {
             for (var j = 1; n >= pow(i, j); j++) {
-                if (mod(n, pow(i, j)) == 0) { fs.push(i); }
+                if (mod(n, pow(i, j)) === 0) { fs.push(i); }
             }
         }
     }
@@ -40,7 +40,7 @@ var steps = [
     },
     {
         'id': 'a-not-congruent-p',
-        'check': function (x, y) { return (mod(x, y) == 0); },
+        'check': function (x, y) { return (mod(x, y) === 0); },
         'result': function (x, y) { return [0, 0]; }
     },
     {
@@ -107,14 +107,14 @@ function legendreStep(x, y) {
 function allLegendreSteps(x, y) {
     function isNotOne(n) { return !(n == 1 || n == -1); }
     function allOnes(a) {
-        return ($.grep($.makeArray(a), isNotOne).length == 0);
+        return ($.grep($.makeArray(a), isNotOne).length === 0);
     }
 
     var step = legendreStep(x, y);
     var next = step.next;
     var legendreSteps = [step];
 
-    while(next[1] != 0) {
+    while(next[1] !== 0) {
         if ($.isArray(next[0])) {
             var zs = [];
 
@@ -137,7 +137,7 @@ function allLegendreSteps(x, y) {
 
     if ($.isArray(next[0]) && allOnes(next[0])) {
         var z = 1;
-        for (var i = 0; i < next[0].length; i++) { z = z * next[0][i]; }
+        for (var j = 0; j < next[0].length; j++) { z = z * next[0][j]; }
 
         legendreSteps.push(
             {'id': 'composite-numbers', 'next': [z, 0]}

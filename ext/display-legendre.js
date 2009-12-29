@@ -15,8 +15,8 @@ function displayLegendre() {
     var answer = $('<p></p>');
 
     answer.attr('id', 'answer');
-    answer.append(legendreSymbol(x, y) + ' = '
-                  + last(results).next[0]);
+    answer.append(legendreSymbol(x, y) + ' = ' +
+                  last(results).next[0]);
 
     element.empty();
     element.append('<h3>Solution</h3>');
@@ -27,7 +27,7 @@ function displayLegendre() {
 
 function attachResultsSublist(parent, results) {
     var element = $('<ol></ol>');
-	element.addClass('steps');
+    element.addClass('steps');
 
     for (var i = 0; i < results.length; i++) {
         var result = results[i];
@@ -36,7 +36,7 @@ function attachResultsSublist(parent, results) {
         item.addClass(result.id);
         item.attr('title', $('#' + result.id).text());
 
-		item.unbind();
+        item.unbind();
         item.click(function() {
             $('#' + $(this).attr('class')).effect('highlight', {}, 3000);
         });
@@ -44,9 +44,9 @@ function attachResultsSublist(parent, results) {
         if ($.isArray(result)) {
             attachResultsSublist(item, result);
         } else {
-			if (result.next[0] == 0) {
-				item.append('Check failed: ' + item.attr('title')) + '.';
-			} else if (result.next[1] == 0) {
+            if (result.next[0] === 0) {
+                item.append('Check failed: ' + item.attr('title') + '.');
+            } else if (result.next[1] === 0) {
                 item.append(e(i) + p(result.next[0]));
             } else {
                 item.append(e(i) + legendreSymbol(result.next[0],

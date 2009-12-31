@@ -27,8 +27,9 @@ dd {
 
 #results ol {
     list-style : none;
-    margin-left : 0em;
-    padding-left : 2em;
+    margin-left : 1em;
+    padding-left : 1em;
+    border-left : 1px solid #eee;
 }
 
 #instructions {

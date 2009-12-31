@@ -38,7 +38,7 @@ function attachResultsSublist(parent, results) {
 
     for (var i = 0; i < results.length; i++) {
         var result = results[i];
-        var item = $('<li></li>');
+        var item = (i === 0 ? $('<p></p>') : $('<li></li>'));
 
         item.addClass(result.id);
         item.attr('title', $('#' + result.id).text());
@@ -62,7 +62,7 @@ function attachResultsSublist(parent, results) {
             }
         }
 
-        element.append(item);
+        (i === 0 ? parent.append(item) : element.append(item));
     }
 
     parent.append(element);

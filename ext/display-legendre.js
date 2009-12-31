@@ -2,7 +2,14 @@ $(document).ready(function() {
     $('#form').submit(displayLegendre);
 });
 
-function e(n) { return (n > 0 ? '= ' : ''); }
+function e(n, r) {
+    if (n === 0) {
+        return legendreSymbol(r.prev[0], r.prev[1]) + ' = ';
+    } else {
+        return '= ';
+    }
+}
+
 function p(r) { return $.makeArray(r).join(' &#215; '); }
 function variable(e) { return parseInt($('#' + e).val(), 10); }
 function legendreSymbol(x, y) { return '(' + p(x) + ' | ' + y + ')'; }
@@ -47,10 +54,11 @@ function attachResultsSublist(parent, results) {
             if (result.next[0] === 0) {
                 item.append('Check failed: ' + item.attr('title') + '.');
             } else if (result.next[1] === 0) {
-                item.append(e(i) + p(result.next[0]));
+                item.append(e(i, result) + p(result.next[0]));
             } else {
-                item.append(e(i) + legendreSymbol(result.next[0],
-                                                  result.next[1]));
+                item.append(e(i, result) +
+                            legendreSymbol(result.next[0],
+                                           result.next[1]));
             }
         }
 

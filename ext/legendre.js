@@ -99,7 +99,10 @@ function legendreStep(x, y) {
         var step = steps[i];
 
         if (step.check(x, y)) {
-            return {'id': step.id, 'next': step.result(x, y)};
+            return {
+                'id': step.id, 'prev': [x, y],
+                'next': step.result(x, y)
+            };
         }
     }
 }
@@ -124,7 +127,11 @@ function allLegendreSteps(x, y) {
                 zs.push(last(substeps).next[0]);
             }
 
-            step = {'id': 'composite-numbers', 'next': [zs, 0]};
+            step = {
+                'id': 'composite-numbers', 'prev': [x, y],
+                'next': [zs, 0]
+            };
+
             next = step.next;
             legendreSteps.push(step);
 
@@ -139,9 +146,10 @@ function allLegendreSteps(x, y) {
         var z = 1;
         for (var j = 0; j < next[0].length; j++) { z = z * next[0][j]; }
 
-        legendreSteps.push(
-            {'id': 'composite-numbers', 'next': [z, 0]}
-        );
+        legendreSteps.push({
+            'id': 'composite-numbers', 'prev': [next[0], next[1]],
+            'next': [z, 0]
+        });
     }
 
     return legendreSteps;

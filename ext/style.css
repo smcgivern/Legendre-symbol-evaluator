@@ -1,14 +1,8 @@
 body {
-    font-family : "DejaVu Sans", "Lucida Sans Unicode", "Arial Unicode MS", sans-serif;
-    font-size : 105%;
     max-width : 60em;
     margin : 1em auto;
     padding : 0em 3em;
     line-height : 2em;
-}
-
-h1 {
-    text-align : center;
 }
 
 dl {

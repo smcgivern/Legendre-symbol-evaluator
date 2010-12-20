@@ -19,6 +19,10 @@ dd {
     margin-left : 0em;
 }
 
+#instructions, #content {
+    border-top : 1px solid #fff;
+}
+
 #results ol {
     list-style : none;
     margin-left : 1em;

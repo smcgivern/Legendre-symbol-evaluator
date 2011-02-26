@@ -23,6 +23,7 @@ dd {
     border-top : 1px solid #fff;
 }
 
+
 #results ol {
     list-style : none;
     margin-left : 1em;
@@ -32,5 +33,5 @@ dd {
 
 #instructions {
     float : right;
-    width : 30em;
+    max-width : 30em;
 }

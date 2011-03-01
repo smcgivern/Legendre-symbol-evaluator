@@ -1,41 +1,41 @@
 body {
-    max-width : 50em;
-    margin : 1em auto;
-    padding : 0em 3em;
-    line-height : 2em;
+    max-width: 50em;
+    margin: 1em auto;
+    padding: 0em 3em;
+    line-height: 2em;
 }
 
 dl {
-    width : auto;
+    width: auto;
 }
 
 dt {
-    font-weight : bold;
-    margin-top : 0.2em;
-    border-top : 1px solid black;
+    font-weight: bold;
+    margin-top: 0.2em;
+    border-top: 1px solid black;
 }
 
 dd {
-    margin-left : 0em;
+    margin-left: 0em;
 }
 
 #instructions, #content {
-    border-top : 1px solid #fff;
+    border-top: 1px solid #fff;
 }
 
 
 #results ol {
-    list-style : none;
-    margin-left : 1em;
-    padding-left : 1em;
-    border-left : 1px solid #eee;
+    list-style: none;
+    margin-left: 1em;
+    padding-left: 1em;
+    border-left: 1px solid #eee;
 }
 
 #results {
-    float : left;
+    float: left;
 }
 
 #instructions {
-    float : right;
-    max-width : 30em;
+    float: right;
+    max-width: 30em;
 }

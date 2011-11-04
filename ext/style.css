@@ -34,3 +34,7 @@ dd {
     float: right;
     max-width: 25em;
 }
+
+#x, #y {
+    width: 5em;
+}
